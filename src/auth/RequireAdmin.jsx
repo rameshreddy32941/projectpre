@@ -4,13 +4,8 @@ import { useAuth } from './AuthProvider'
 export default function RequireAdmin({ children }) {
   const auth = useAuth()
 
+  // Allow any logged-in user
   if (!auth.user) {
-    // not logged in
-    return <Navigate to="/login" replace />
-  }
-
-  if (auth.user.role !== 'admin') {
-    // logged in but not admin - send to login (or show unauthorized)
     return <Navigate to="/login" replace />
   }
 
